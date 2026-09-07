@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FoodieGo — Low-Fidelity Wireframes</title>
+<style>
+  :root{
+    --line:#8a8a8a;
+    --line-dark:#3a3a3a;
+    --box:#eaeaea;
+    --box-dark:#d3d3d3;
+    --bg:#fafafa;
+    --paper:#ffffff;
+    --accent:#6b6b6b;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Segoe UI', Helvetica, Arial, sans-serif;
+    background:var(--bg);
+    color:#222;
+    padding:32px 24px 80px;
+  }
+  header{
+    max-width:1400px;
+    margin:0 auto 36px;
+  }
+  header h1{
+    font-size:26px;
+    margin:0 0 6px;
+    letter-spacing:.5px;
+  }
+  header p{
+    margin:0;
+    color:#555;
+    font-size:14px;
+    max-width:700px;
+    line-height:1.5;
+  }
+  .legend{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    margin-top:14px;
+    font-size:12px;
+    color:#666;
+  }
+  .legend span{display:flex;align-items:center;gap:6px;}
+  .swatch{width:14px;height:14px;border:1px solid var(--line);background:var(--box);display:inline-block;}
+  .swatch.dark{background:var(--box-dark);}
+
+  .board{
+    max-width:1400px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:34px;
+  }
+  .screen-wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .screen-title{
+    font-size:13px;
+    font-weight:600;
+    color:var(--line-dark);
+    margin-bottom:8px;
+    text-transform:uppercase;
+    letter-spacing:.6px;
+  }
+  .phone{
+    width:260px;
+    height:520px;
+    background:var(--paper);
+    border:2px solid var(--line-dark);
+    border-radius:22px;
+    padding:14px 10px;
+    position:relative;
+    box-shadow:0 2px 6px rgba(0,0,0,0.08);
+  }
+  .notch{
+    width:70px;height:6px;background:var(--line-dark);
+    border-radius:3px;margin:0 auto 10px;
+  }
+  .status-line{
+    height:8px;background:var(--box);border:1px solid var(--line);
+    border-radius:2px;margin-bottom:8px;
+  }
+  .row{display:flex;gap:6px;align-items:center;}
+  .icon-circle{
+    width:22px;height:22px;border-radius:50%;
+    border:1.5px solid var(--line-dark);
+    flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;
+    font-size:10px;color:var(--line-dark);
+  }
+  .box{
+    background:var(--box);
+    border:1.5px solid var(--line);
+    border-radius:4px;
+  }
+  .box.dark{background:var(--box-dark);}
+  .txt-line{
+    height:6px;background:var(--box);
+    border-radius:2px;
+    border:1px solid var(--line);
+  }
+  .btn{
+    height:30px;
+    background:var(--box-dark);
+    border:1.5px solid var(--line-dark);
+    border-radius:16px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:10px;
+    color:var(--line-dark);
+    letter-spacing:.4px;
+  }
+  .label{
+    font-size:9px;
+    color:var(--accent);
+    text-align:center;
+    margin-top:2px;
+  }
+  .imgX{
+    position:relative;
+    background:var(--box);
+    border:1.5px dashed var(--line);
+    border-radius:4px;
+  }
+  .imgX::before,.imgX::after{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;bottom:0;
+    background:linear-gradient(45deg, transparent 48%, var(--line) 49%, var(--line) 51%, transparent 52%),
+               linear-gradient(-45deg, transparent 48%, var(--line) 49%, var(--line) 51%, transparent 52%);
+  }
+  .navbar{
+    position:absolute;
+    bottom:14px;left:10px;right:10px;
+    height:44px;
+    border-top:1.5px solid var(--line-dark);
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    padding-top:6px;
+  }
+  .navitem{display:flex;flex-direction:column;align-items:center;gap:3px;}
+  .dot{width:16px;height:16px;border:1.5px solid var(--line-dark);border-radius:3px;}
+  .navlabel{font-size:7px;color:var(--accent);}
+
+  .annot{
+    max-width:260px;
+    margin-top:10px;
+    font-size:11px;
+    color:#555;
+    line-height:1.5;
+    padding:8px 10px;
+    background:#fff;
+    border:1px dashed #bbb;
+    border-radius:6px;
+  }
+  .annot b{color:#333;}
+  .flow-note{
+    max-width:1400px;
+    margin:44px auto 0;
+    font-size:13px;
+    color:#555;
+    border-top:1px solid #ddd;
+    padding-top:18px;
+    line-height:1.7;
+  }
+  .flow-note h2{font-size:16px;color:#222;margin:0 0 10px;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>FoodieGo — Food Delivery App</h1>
+  <p>Low-fidelity wireframes · Task 1: Wireframing &amp; Low-Fidelity Design · CodeAlpha UI/UX Internship.
+  Grayscale, no color/typography decisions yet — layout, hierarchy, and flow only.</p>
+  <div class="legend">
+    <span><span class="swatch"></span> Content block / image placeholder</span>
+    <span><span class="swatch dark"></span> Primary action (button)</span>
+    <span><span class="icon-circle" style="width:14px;height:14px;font-size:8px;">i</span> Icon</span>
+  </div>
+</header>
+
+<div class="board">
+
+  <!-- SCREEN 1: Onboarding -->
+  <div class="screen-wrap">
+    <div class="screen-title">1 · Onboarding</div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="imgX" style="height:180px;margin-bottom:16px;"></div>
+      <div class="txt-line" style="width:70%;height:12px;margin:0 auto 10px;"></div>
+      <div class="txt-line" style="width:90%;margin:0 auto 6px;"></div>
+      <div class="txt-line" style="width:80%;margin:0 auto 6px;"></div>
+      <div class="txt-line" style="width:85%;margin:0 auto 20px;"></div>
+      <div class="row" style="justify-content:center;gap:5px;margin-bottom:18px;">
+        <div class="box dark" style="width:16px;height:5px;border-radius:3px;"></div>
+        <div class="box" style="width:5px;height:5px;border-radius:50%;"></div>
+        <div class="box" style="width:5px;height:5px;border-radius:50%;"></div>
+      </div>
+      <div class="btn">GET STARTED</div>
+      <div class="label" style="margin-top:10px;">Already have an account? Log in</div>
+    </div>
+    <div class="annot"><b>Purpose:</b> First-touch screen. Swipeable carousel (dots indicate 3 slides) explains value prop before forcing sign-up.</div>
+  </div>
+
+  <!-- SCREEN 2: Home -->
+  <div class="screen-wrap">
+    <div class="screen-title">2 · Home / Discover</div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="row" style="justify-content:space-between;margin-bottom:10px;">
+        <div>
+          <div class="txt-line" style="width:60px;margin-bottom:4px;"></div>
+          <div class="txt-line" style="width:90px;height:8px;"></div>
+        </div>
+        <div class="icon-circle">🔔</div>
+      </div>
+      <div class="box" style="height:32px;border-radius:16px;margin-bottom:10px;display:flex;align-items:center;padding-left:10px;">
+        <span style="font-size:10px;color:var(--accent);">🔍 Search restaurants, dishes...</span>
+      </div>
+      <div class="row" style="gap:6px;margin-bottom:12px;">
+        <div class="box" style="width:50px;height:22px;border-radius:11px;"></div>
+        <div class="box" style="width:50px;height:22px;border-radius:11px;"></div>
+        <div class="box" style="width:50px;height:22px;border-radius:11px;"></div>
+        <div class="box" style="width:50px;height:22px;border-radius:11px;"></div>
+      </div>
+      <div class="txt-line" style="width:40%;height:9px;margin-bottom:8px;"></div>
+      <div class="row" style="gap:8px;margin-bottom:14px;">
+        <div class="imgX" style="width:70px;height:70px;"></div>
+        <div class="imgX" style="width:70px;height:70px;"></div>
+        <div class="imgX" style="width:70px;height:70px;"></div>
+      </div>
+      <div class="txt-line" style="width:50%;height:9px;margin-bottom:8px;"></div>
+      <div class="row" style="gap:8px;margin-bottom:8px;">
+        <div class="imgX" style="width:60px;height:60px;flex:0 0 auto;"></div>
+        <div style="flex:1;">
+          <div class="txt-line" style="width:80%;margin-bottom:5px;"></div>
+          <div class="txt-line" style="width:50%;height:7px;margin-bottom:5px;"></div>
+          <div class="txt-line" style="width:40%;height:7px;"></div>
+        </div>
+      </div>
+      <div class="row" style="gap:8px;">
+        <div class="imgX" style="width:60px;height:60px;flex:0 0 auto;"></div>
+        <div style="flex:1;">
+          <div class="txt-line" style="width:80%;margin-bottom:5px;"></div>
+          <div class="txt-line" style="width:50%;height:7px;margin-bottom:5px;"></div>
+          <div class="txt-line" style="width:40%;height:7px;"></div>
+        </div>
+      </div>
+      <div class="navbar">
+        <div class="navitem"><div class="dot"></div><div class="navlabel">Home</div></div>
+        <div class="navitem"><div class="dot"></div><div class="navlabel">Orders</div></div>
+        <div class="navitem"><div class="dot"></div><div class="navlabel">Cart</div></div>
+        <div class="navitem"><div class="dot"></div><div class="navlabel">Profile</div></div>
+      </div>
+    </div>
+    <div class="annot"><b>Purpose:</b> Primary hub. Search bar for intent-driven users, category chips for browsing, "Featured" carousel + vertical restaurant list for discovery. Bottom tab bar is persistent.</div>
+  </div>
+
+  <!-- SCREEN 3: Restaurant / Menu -->
+  <div class="screen-wrap">
+    <div class="screen-title">3 · Restaurant Menu</div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="imgX" style="height:110px;margin-bottom:10px;position:relative;">
+        <div class="icon-circle" style="position:absolute;top:6px;left:6px;background:#fff;">←</div>
+        <div class="icon-circle" style="position:absolute;top:6px;right:6px;background:#fff;">♡</div>
+      </div>
+      <div class="txt-line" style="width:70%;height:11px;margin-bottom:6px;"></div>
+      <div class="row" style="gap:5px;margin-bottom:10px;">
+        <div class="txt-line" style="width:30%;height:7px;"></div>
+        <div class="txt-line" style="width:20%;height:7px;"></div>
+        <div class="txt-line" style="width:25%;height:7px;"></div>
+      </div>
+      <div class="row" style="gap:6px;margin-bottom:12px;">
+        <div class="box dark" style="width:60px;height:20px;border-radius:10px;"></div>
+        <div class="box" style="width:60px;height:20px;border-radius:10px;"></div>
+        <div class="box" style="width:60px;height:20px;border-radius:10px;"></div>
+      </div>
+      <div class="row" style="gap:8px;margin-bottom:10px;">
+        <div style="flex:1;">
+          <div class="txt-line" style="width:80%;margin-bottom:5px;"></div>
+          <div class="txt-line" style="width:95%;height:6px;margin-bottom:4px;"></div>
+          <div class="txt-line" style="width:30%;height:8px;"></div>
+        </div>
+        <div class="imgX" style="width:56px;height:56px;flex:0 0 auto;"></div>
+      </div>
+      <div class="row" style="gap:8px;margin-bottom:10px;">
+        <div style="flex:1;">
+          <div class="txt-line" style="width:75%;margin-bottom:5px;"></div>
+          <div class="txt-line" style="width:90%;height:6px;margin-bottom:4px;"></div>
+          <div class="txt-line" style="width:30%;height:8px;"></div>
+        </div>
+        <div class="imgX" style="width:56px;height:56px;flex:0 0 auto;"></div>
+      </div>
+      <div class="row" style="gap:8px;">
+        <div style="flex:1;">
+          <div class="txt-line" style="width:70%;margin-bottom:5px;"></div>
+          <div class="txt-line" style="width:85%;height:6px;margin-bottom:4px;"></div>
+          <div class="txt-line" style="width:30%;height:8px;"></div>
+        </div>
+        <div class="imgX" style="width:56px;height:56px;flex:0 0 auto;"></div>
+      </div>
+    </div>
+    <div class="annot"><b>Purpose:</b> Restaurant hero image, rating/delivery-time meta, category tabs (Popular/Starters/Mains), scrollable item list — each row taps into an "Add to cart" item detail sheet.</div>
+  </div>
+
+  <!-- SCREEN 4: Item detail / Add to cart -->
+  <div class="screen-wrap">
+    <div class="screen-title">4 · Item Detail</div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="imgX" style="height:150px;margin-bottom:12px;position:relative;">
+        <div class="icon-circle" style="position:absolute;top:6px;left:6px;background:#fff;">✕</div>
+      </div>
+      <div class="txt-line" style="width:65%;height:11px;margin-bottom:8px;"></div>
+      <div class="txt-line" style="width:95%;height:6px;margin-bottom:4px;"></div>
+      <div class="txt-line" style="width:80%;height:6px;margin-bottom:12px;"></div>
+      <div class="txt-line" style="width:35%;height:10px;margin-bottom:14px;"></div>
+      <div class="txt-line" style="width:40%;height:8px;margin-bottom:8px;"></div>
+      <div class="row" style="gap:6px;margin-bottom:16px;">
+        <div class="box" style="width:70px;height:24px;border-radius:12px;"></div>
+        <div class="box" style="width:70px;height:24px;border-radius:12px;"></div>
+      </div>
+      <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:14px;">
+        <div class="row" style="gap:8px;">
+          <div class="icon-circle">−</div>
+          <div class="txt-line" style="width:16px;height:10px;"></div>
+          <div class="icon-circle">+</div>
+        </div>
+      </div>
+      <div class="btn" style="width:100%;">ADD TO CART · $12.50</div>
+    </div>
+    <div class="annot"><b>Purpose:</b> Modal/detail view for a single dish. Customization options (size, add-ons), quantity stepper, and sticky-style CTA showing live price total.</div>
+  </div>
+
+  <!-- SCREEN 5: Cart / Checkout -->
+  <div class="screen-wrap">
+    <div class="screen-title">5 · Cart &amp; Checkout</div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="txt-line" style="width:50%;height:12px;margin-bottom:14px;"></div>
+      <div class="row" style="gap:8px;margin-bottom:10px;">
+        <div class="imgX" style="width:44px;height:44px;flex:0 0 auto;"></div>
+        <div style="flex:1;">
+          <div class="txt-line" style="width:70%;margin-bottom:4px;"></div>
+          <div class="txt-line" style="width:30%;height:7px;"></div>
+        </div>
+        <div class="txt-line" style="width:24px;height:8px;"></div>
+      </div>
+      <div class="row" style="gap:8px;margin-bottom:16px;">
+        <div class="imgX" style="width:44px;height:44px;flex:0 0 auto;"></div>
+        <div style="flex:1;">
+          <div class="txt-line" style="width:60%;margin-bottom:4px;"></div>
+          <div class="txt-line" style="width:30%;height:7px;"></div>
+        </div>
+        <div class="txt-line" style="width:24px;height:8px;"></div>
+      </div>
+      <div class="box" style="height:34px;border-radius:6px;margin-bottom:14px;display:flex;align-items:center;padding-left:10px;">
+        <span style="font-size:9px;color:var(--accent);">🏷 Add promo code</span>
+      </div>
+      <div class="txt-line" style="width:90%;margin-bottom:6px;"></div>
+      <div class="txt-line" style="width:90%;margin-bottom:6px;"></div>
+      <div class="txt-line" style="width:90%;height:10px;margin-bottom:16px;"></div>
+      <div class="box" style="height:30px;border-radius:6px;margin-bottom:14px;display:flex;align-items:center;padding-left:10px;">
+        <span style="font-size:9px;color:var(--accent);">📍 Deliver to: Home</span>
+      </div>
+      <div class="btn" style="width:100%;">PLACE ORDER</div>
+    </div>
+    <div class="annot"><b>Purpose:</b> Editable order summary, promo code entry, cost breakdown (subtotal/delivery/tax/total), delivery address selector, single confirm CTA.</div>
+  </div>
+
+  <!-- SCREEN 6: Order tracking -->
+  <div class="screen-wrap">
+    <div class="screen-title">6 · Order Tracking</div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="imgX" style="height:170px;margin-bottom:14px;"></div>
+      <div class="label" style="text-align:left;font-size:9px;margin-bottom:6px;">MAP VIEW — live rider location</div>
+      <div class="row" style="justify-content:space-between;margin-bottom:14px;">
+        <div class="icon-circle">🏠</div>
+        <div class="box" style="flex:1;height:2px;margin:14px 6px 0;"></div>
+        <div class="icon-circle">🏍</div>
+        <div class="box" style="flex:1;height:2px;margin:14px 6px 0;"></div>
+        <div class="icon-circle">📍</div>
+      </div>
+      <div class="txt-line" style="width:60%;height:11px;margin-bottom:8px;"></div>
+      <div class="txt-line" style="width:80%;height:7px;margin-bottom:16px;"></div>
+      <div class="row" style="gap:8px;align-items:center;">
+        <div class="box" style="width:40px;height:40px;border-radius:50%;flex:0 0 auto;"></div>
+        <div style="flex:1;">
+          <div class="txt-line" style="width:70%;margin-bottom:4px;"></div>
+          <div class="txt-line" style="width:40%;height:7px;"></div>
+        </div>
+        <div class="icon-circle">📞</div>
+      </div>
+    </div>
+    <div class="annot"><b>Purpose:</b> Live status: map, step tracker (Placed → Preparing → On the way → Delivered), ETA, and rider contact card.</div>
+  </div>
+
+  <!-- SCREEN 7: Profile -->
+  <div class="screen-wrap">
+    <div class="screen-title">7 · Profile</div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="row" style="gap:10px;margin-bottom:18px;align-items:center;">
+        <div class="box" style="width:54px;height:54px;border-radius:50%;"></div>
+        <div>
+          <div class="txt-line" style="width:100px;margin-bottom:5px;"></div>
+          <div class="txt-line" style="width:80px;height:7px;"></div>
+        </div>
+      </div>
+      <div class="row" style="gap:8px;margin-bottom:10px;align-items:center;"><div class="icon-circle">📦</div><div class="txt-line" style="width:60%;"></div></div>
+      <div class="row" style="gap:8px;margin-bottom:10px;align-items:center;"><div class="icon-circle">📍</div><div class="txt-line" style="width:55%;"></div></div>
+      <div class="row" style="gap:8px;margin-bottom:10px;align-items:center;"><div class="icon-circle">💳</div><div class="txt-line" style="width:50%;"></div></div>
+      <div class="row" style="gap:8px;margin-bottom:10px;align-items:center;"><div class="icon-circle">🎟</div><div class="txt-line" style="width:45%;"></div></div>
+      <div class="row" style="gap:8px;margin-bottom:10px;align-items:center;"><div class="icon-circle">⚙</div><div class="txt-line" style="width:40%;"></div></div>
+      <div class="row" style="gap:8px;margin-bottom:20px;align-items:center;"><div class="icon-circle">❓</div><div class="txt-line" style="width:50%;"></div></div>
+      <div class="btn" style="width:100%;">LOG OUT</div>
+      <div class="navbar">
+        <div class="navitem"><div class="dot"></div><div class="navlabel">Home</div></div>
+        <div class="navitem"><div class="dot"></div><div class="navlabel">Orders</div></div>
+        <div class="navitem"><div class="dot"></div><div class="navlabel">Cart</div></div>
+        <div class="navitem"><div class="dot"></div><div class="navlabel">Profile</div></div>
+      </div>
+    </div>
+    <div class="annot"><b>Purpose:</b> Account hub — order history, saved addresses, payment methods, promos/coupons, settings, and support access.</div>
+  </div>
+
+</div>
+
+<div class="flow-note">
+  <h2>User Flow (happy path)</h2>
+  Onboarding → Home (browse/search) → Restaurant Menu → Item Detail (customize + add to cart) → Cart &amp; Checkout (review, promo, address) → Place Order → Order Tracking → (post-delivery) rate order from Profile / Order History.
+  <br><br>
+  <b>Notes for Figma/XD handoff:</b> Each phone frame above = one Figma artboard (375×812, iPhone frame). Use gray/neutral fill (#EAEAEA) for all placeholder blocks, dashed borders for images, and keep every label as a gray bar (no real copy or color) — this keeps the review focused on layout and hierarchy, not visual design. Link the frames in Figma's prototype mode following the arrows above to demonstrate flow.
+</div>
+
+</body>
+</html>
